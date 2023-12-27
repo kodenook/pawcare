@@ -21,9 +21,11 @@ class User extends Authenticatable implements FilamentUser, HasName
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'password',
+        'phone',
+        'password'
     ];
 
     /**
@@ -74,7 +76,39 @@ class User extends Authenticatable implements FilamentUser, HasName
     protected function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn () => ucwords($this->first_name . ' ' . $this->last_name),
+            get: fn () => ucwords($this->first_name . ' ' . $this->last_name)
+        );
+    }
+
+    /**
+     * Interact with the user's first name.
+     */
+    protected function firstName(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+            set: fn (string $value) => strtolower($value)
+        );
+    }
+
+    /**
+     * Interact with the user's last name.
+     */
+    protected function lastName(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => ucfirst($value),
+            set: fn (string $value) => strtolower($value)
+        );
+    }
+
+    /**
+     * Interact with the user's email.
+     */
+    protected function Email(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => strtolower($value)
         );
     }
 }

@@ -18,5 +18,10 @@ class UserSeeder extends Seeder
             'last_name' => 'ocaranza',
             'email' => 'kodenook@pawcare.com'
         ]);
+
+        if (@env('APP_ENV') !== 'production') {
+            User::factory(5)->create();
+            User::factory(4)->password()->create();
+        }
     }
 }
