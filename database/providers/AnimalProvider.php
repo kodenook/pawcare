@@ -17,6 +17,17 @@ class AnimalProvider extends Base
         'penguin', 'kangaroo', 'hippopotamus', 'panda', 'koala'
     ];
 
+    /* The `breeds` is a static property that holds an array of animal breeds. Each
+    animal breed represents a possible value that can be returned by the `breedAnimal()` method in the
+    `AnimalProvider` class. */
+    protected static $breeds = [
+        'persian', 'siamese', 'maine coon', 'ragdoll', 'bengal',
+        'thoroughbred', 'arabian', 'quarter horse', 'clydesdale', 'shetland pony',
+        'holstein', 'angus', 'hereford', 'jersey', 'charolais',
+        'yorkshire', 'hampshire', 'berkshire', 'duroc', 'tamworth',
+        'nubian', 'saanen', 'merino', 'suffolk', 'pekin'
+    ];
+
     /**
      * The function returns a random element from an array of types.
      *
@@ -25,5 +36,15 @@ class AnimalProvider extends Base
     public static function typeAnimal()
     {
         return static::randomElement(static::$types);
+    }
+
+    /**
+     * The function returns a random element from an array of breeds.
+     *
+     * @return string
+     */
+    public static function breedAnimal()
+    {
+        return static::randomElement(static::$breeds);
     }
 }

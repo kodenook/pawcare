@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Type extends Model
+class Breed extends Model
 {
     use HasFactory;
 
@@ -18,10 +18,11 @@ class Type extends Model
      */
     protected $fillable = [
         'name',
+        'type_id'
     ];
 
     /**
-     * Interact with the type's name.
+     * Interact with the breed's name.
      */
     protected function name(): Attribute
     {
@@ -32,10 +33,10 @@ class Type extends Model
     }
 
     /**
-     * Get the breeds for the type.
+     * Get the type that owns the breed.
      */
-    public function breeds(): HasMany
+    public function type(): BelongsTo
     {
-        return $this->hasMany(Breed::class)->select('id', 'name');
+        return $this->belongsTo(Type::class)->select('id', 'name');
     }
 }
