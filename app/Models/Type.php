@@ -38,4 +38,12 @@ class Type extends Model
     {
         return $this->hasMany(Breed::class)->select('id', 'name');
     }
+
+    /**
+     * Get the pets for the type.
+     */
+    public function pets(): HasMany
+    {
+        return $this->hasMany(Pet::class)->select('id', 'name', 'user_id', 'breed_id');
+    }
 }

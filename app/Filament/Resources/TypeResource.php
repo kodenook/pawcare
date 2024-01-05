@@ -52,7 +52,8 @@ class TypeResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\BreedsRelationManager::class
+            RelationManagers\BreedsRelationManager::class,
+            RelationManagers\PetsRelationManager::class
         ];
     }
 

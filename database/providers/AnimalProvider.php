@@ -28,6 +28,16 @@ class AnimalProvider extends Base
         'nubian', 'saanen', 'merino', 'suffolk', 'pekin'
     ];
 
+    /* The `names` is a static property that holds an array of animal names. Each
+    animal name represents a possible value that can be returned by the `nameAnimal()` method in the
+    `AnimalProvider` class. */
+    protected static $names = [
+        'fluffy', 'whiskers', 'nala', 'gizmo', 'mochi',
+        'peanut', 'bella', 'simba', 'misty', 'oreo',
+        'rocky', 'tinkerbell', 'sparky', 'coco', 'ziggy',
+        'sassy', 'pepper', 'oliver', 'luna', 'patches'
+    ];
+
     /**
      * The function returns a random element from an array of types.
      *
@@ -46,5 +56,15 @@ class AnimalProvider extends Base
     public static function breedAnimal()
     {
         return static::randomElement(static::$breeds);
+    }
+
+    /**
+     * The function returns a random element from an array of names.
+     *
+     * @return string
+     */
+    public static function nameAnimal()
+    {
+        return static::randomElement(static::$names);
     }
 }

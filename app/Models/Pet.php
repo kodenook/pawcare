@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Breed extends Model
+class Pet extends Model
 {
     use HasFactory;
 
@@ -19,11 +18,13 @@ class Breed extends Model
      */
     protected $fillable = [
         'name',
-        'type_id'
+        'user_id',
+        'type_id',
+        'breed_id'
     ];
 
     /**
-     * Interact with the breed's name.
+     * Interact with the pet's name.
      */
     protected function name(): Attribute
     {
@@ -34,7 +35,15 @@ class Breed extends Model
     }
 
     /**
-     * Get the type that owns the breed.
+     * Get the user that owns the pet.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class)->select('id', 'first_name', 'last_name');
+    }
+
+    /**
+     * Get the type that owns the pet.
      */
     public function type(): BelongsTo
     {
@@ -42,10 +51,10 @@ class Breed extends Model
     }
 
     /**
-     * Get the pets for the breed.
+     * Get the breed that owns the pet.
      */
-    public function pets(): HasMany
+    public function breed(): BelongsTo
     {
-        return $this->hasMany(Pet::class)->select('id', 'name', 'user_id', 'type_id');
+        return $this->belongsTo(Breed::class)->select('id', 'name');
     }
 }

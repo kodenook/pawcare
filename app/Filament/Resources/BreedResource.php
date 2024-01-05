@@ -60,7 +60,7 @@ class BreedResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\PetsRelationManager::class
         ];
     }
 
