@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeSeeder::class,
             BreedSeeder::class,
-            PetSeeder::class
+            PetSeeder::class,
+            TreatmentSeeder::class
         ]);
     }
 }

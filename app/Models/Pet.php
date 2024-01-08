@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pet extends Model
 {
@@ -56,5 +57,14 @@ class Pet extends Model
     public function breed(): BelongsTo
     {
         return $this->belongsTo(Breed::class)->select('id', 'name');
+    }
+
+
+    /**
+     * Get the treatments for the pet.
+     */
+    public function treatments(): HasMany
+    {
+        return $this->hasMany(Treatment::class)->select('id', 'title', 'prescription', 'created_at');
     }
 }
