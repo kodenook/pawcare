@@ -38,6 +38,17 @@ class AnimalProvider extends Base
         'sassy', 'pepper', 'oliver', 'luna', 'patches'
     ];
 
+    /* The `diseases` is a static property that holds an array of animal diseases. Each
+    animal disease represents a possible value that can be returned by the `diseaseAnimal()` method in the
+    `AnimalProvider` class. */
+    protected static $diseases = [
+        'parvovirus', 'distemper', 'leptospirosis', 'feline panleukopenia', 'feline rhinotracheitis and calicivirus',
+        'fleas', 'ticks', 'heartworm', 'intestinal worms', 'giardiasis',
+        'allergic dermatitis', 'skin infections', 'fungal infections', 'gastroenteritis', 'pancreatitis',
+        'intestinal obstructions', 'inflammatory bowel disease', 'diabetes mellitus', 'hypothyroidism', 'arthritis',
+        'periodontal disease', 'dental abscesses', 'conjunctivitis', 'glaucoma', 'cataracts'
+    ];
+
     /**
      * The function returns a random element from an array of types.
      *
@@ -66,5 +77,15 @@ class AnimalProvider extends Base
     public static function nameAnimal()
     {
         return static::randomElement(static::$names);
+    }
+
+    /**
+     * The function returns a random element from an array of diseases.
+     *
+     * @return string
+     */
+    public static function diseaseAnimal()
+    {
+        return static::randomElement(static::$diseases);
     }
 }
